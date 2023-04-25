@@ -338,12 +338,14 @@ form textarea {
     cursor: pointer;
     top: 90px;
     right: 30px;
+    border: none;
     z-index: 11;
 }
 
 #bodyLightbox {
     position: fixed;
     border-radius: 5px;
+    border: none;
     width: 100%;
     height: 600px;
     display: flex;
@@ -356,6 +358,7 @@ form textarea {
 
 .lightbox__container {
     position: relative;
+    border: none;
     width: 84%;
     /* min-height: 100vh; */
     display: flex;

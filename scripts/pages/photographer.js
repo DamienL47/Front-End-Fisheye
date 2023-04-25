@@ -101,7 +101,7 @@ class PhotographerPage {
       const $articleMedias = document.createElement('article');
       const displayMedias = 
       `
-      <div class="mediaDisplay_bloc">
+      <div class="mediaDisplay_bloc" aria-label="Cliquer pour voir en gros plan">
       <a href="${this.linkMedia(this._media)}" name="${this._media.title}" aria-label="${this._media.title}" class="mediaDisplay_link">
       ${this.renderMedia(this._media)}
       </a>
@@ -140,22 +140,22 @@ class PhotographerPage {
         <div id="coordonees">
           <div class="formData">
             <label for="prenom">Prénom</label>
-            <input type="text" id="prenom" name="firstName" aria-labelledby="prenom" tabindex="0"/>
+            <input type="text" id="prenom" name="firstName" aria-labelledby="prenom" placeholder="Saisissez votre prénom" tabindex="0"/>
             <span class="errorMessage"></span>
           </div>
           <div class="formData">
             <label for="nom">Nom</label>
-            <input type="text" id="nom" name="lastName" aria-labelledby="nom"/>
+            <input type="text" id="nom" name="lastName" placeholder="Saisissez votre nom" aria-labelledby="nom"/>
             <span class="errorMessage"></span>
           </div>
           <div class="formData">
             <label for="email">Email</label>
-            <input type="text" id="email" name="email" aria-labelledby="email"/>
+            <input type="text" id="email" name="email" placeholder="Saisissez votre email" aria-labelledby="email"/>
             <span class="errorMessage"></span>
           </div>
           <div class="formData">
             <label for="message">Votre Message</label>
-            <textarea type="text" id="message" name="message" aria-labelledby="message"></textarea>
+            <textarea type="text" id="message" name="message" placeholder="Saisissez votre message" aria-labelledby="message"></textarea>
             <span class="errorMessage"></span>
           </div>
         </div>  
@@ -168,8 +168,10 @@ class PhotographerPage {
 
     //Je génère et renvoie la vue associé à l'affichage dynamique de la lightbox
     displayLightBox() {  
-      const $content = document.createElement('div');
+      const $content = document.createElement('dialog');
       $content.setAttribute('class', 'lightbox__container');
+      $content.setAttribute('role', 'dialog');
+      $content.setAttribute('aria-label', 'Affichage des medias en gros plan');
       const $image = document.querySelectorAll('a[href$=".jpg"]');
       const $video = document.querySelectorAll('a[href$=".mp4"]');
       const links = [...$image, ...$video];   
@@ -190,6 +192,7 @@ class PhotographerPage {
             var linkElement = document.createElement('img');
             var titleMedia = document.createElement('p');
             titleMedia.setAttribute('class', 'titleMedia');
+            titleMedia.setAttribute('aria-label', link.name);
             linkElement.setAttribute('src', linkSrc);
             linkElement.setAttribute('alt', link.name);
             titleMedia.innerHTML = `${link.name}`;
@@ -199,8 +202,8 @@ class PhotographerPage {
             var linkElement = document.createElement('video');
             var titleMedia = document.createElement('p');
             titleMedia.setAttribute('class', 'titleMedia');
+            titleMedia.setAttribute('aria-label', link.name);
             linkElement.setAttribute('src', linkSrc);
-            linkElement.setAttribute('aria-label', link.name);
             linkElement.setAttribute('controls', true);
             linkElement.setAttribute('autoplay', true);
             titleMedia.innerHTML = `${link.name}`;
@@ -228,6 +231,7 @@ class PhotographerPage {
           linkElement.setAttribute('alt', `${links[compteur].name}`);
           var titleMedia = document.createElement('p');
           titleMedia.setAttribute('class', 'titleMedia');
+          titleMedia.setAttribute('aria-label', `${links[compteur].name}`);
           $content.appendChild(linkElement);
           titleMedia.innerHTML = `${links[compteur].name}`;
           $content.appendChild(titleMedia);
@@ -237,9 +241,9 @@ class PhotographerPage {
           linkElement.setAttribute('src', `${linkSrc}`);
           linkElement.setAttribute('controls', true);
           linkElement.setAttribute('autoplay', true);
-          linkElement.setAttribute('aria-label', `${links[compteur].name}`);
           var titleMedia = document.createElement('p');
           titleMedia.setAttribute('class', 'titleMedia');
+          titleMedia.setAttribute('aria-label', `${links[compteur].name}`);
           titleMedia.innerHTML = `${links[compteur].name}`;
           $content.appendChild(linkElement);
           $content.appendChild(titleMedia);
@@ -259,6 +263,7 @@ class PhotographerPage {
           linkElement.setAttribute('alt', `${links[compteur].name}`);
           var titleMedia = document.createElement('p');
           titleMedia.setAttribute('class', 'titleMedia');
+          titleMedia.setAttribute('aria-label', `${links[compteur].name}`);
           titleMedia.innerHTML = `${links[compteur].name}`;
           $content.appendChild(linkElement);
           $content.appendChild(titleMedia);
@@ -268,9 +273,9 @@ class PhotographerPage {
           linkElement.setAttribute('src', `${linkSrc}`);
           linkElement.setAttribute('controls', true);
           linkElement.setAttribute('autoplay', true);
-          linkElement.setAttribute('aria-label', `${links[compteur].name}`);
           var titleMedia = document.createElement('p');
           titleMedia.setAttribute('class', 'titleMedia');
+          titleMedia.setAttribute('aria-label', `${links[compteur].name}`);
           titleMedia.innerHTML = `${links[compteur].name}`;
           $content.appendChild(linkElement);
           $content.appendChild(titleMedia);
@@ -296,6 +301,7 @@ class PhotographerPage {
             linkElement.setAttribute('src', `${linkSrc}`);
             var titleMedia = document.createElement('p');
             titleMedia.setAttribute('class', 'titleMedia');
+            titleMedia.setAttribute('aria-label', `${links[compteur].name}`);
             $content.appendChild(linkElement);
             titleMedia.innerHTML = `${links[compteur].name}`;
             $content.appendChild(titleMedia);
@@ -307,6 +313,7 @@ class PhotographerPage {
             linkElement.setAttribute('autoplay', true);
             var titleMedia = document.createElement('p');
             titleMedia.setAttribute('class', 'titleMedia');
+            titleMedia.setAttribute('aria-label', `${links[compteur].name}`);
             titleMedia.innerHTML = `${links[compteur].name}`;
             $content.appendChild(linkElement);
             $content.appendChild(titleMedia);
@@ -323,6 +330,7 @@ class PhotographerPage {
             linkElement.setAttribute('src', `${linkSrc}`);
             var titleMedia = document.createElement('p');
             titleMedia.setAttribute('class', 'titleMedia');
+            titleMedia.setAttribute('aria-label', `${links[compteur].name}`);
             titleMedia.innerHTML = `${links[compteur].name}`;
             $content.appendChild(linkElement);
             $content.appendChild(titleMedia);
@@ -334,6 +342,7 @@ class PhotographerPage {
             linkElement.setAttribute('autoplay', true);
             var titleMedia = document.createElement('p');
             titleMedia.setAttribute('class', 'titleMedia');
+            titleMedia.setAttribute('aria-label', `${links[compteur].name}`);
             titleMedia.innerHTML = `${links[compteur].name}`;
             $content.appendChild(linkElement);
             $content.appendChild(titleMedia);
