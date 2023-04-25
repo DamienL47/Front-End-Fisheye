@@ -1,3 +1,4 @@
+//Je crée une fonction pour afficher la modale de contact
 function displayModal() {
     const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
@@ -21,7 +22,7 @@ function displayModal() {
         validForm();
     });
 }
-
+//Je crée une fonction pour la fermeture de la modale de contact
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     const btnModal = document.querySelector(".contact_button");
@@ -35,7 +36,7 @@ function closeModal() {
     btnModal.focus();
 }
 
-
+//Je crée une fonction pour gérer les cas d'erreur dans le formulaire de contact
 const validForm = () => {
     const formData = document.querySelectorAll(".formData");
     var formValid = [];

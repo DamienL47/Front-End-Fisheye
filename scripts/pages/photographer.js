@@ -1,11 +1,12 @@
-//Mettre le code JavaScript lié à la page photographer.html
-// ma classe photographerPage retourne le template ou la vue de mes cartes photographer 
+
+// ma classe photographerPage retourne les templates ou les vues de mes pages photographer 
 class PhotographerPage {
     constructor(photographer, media){
         this._photographer = new Photographer(photographer);
         this._media = new PhotographerMedia(media);
     }
-
+    //Je génère et renvoie la vue de la page photographe ici je génère la bannière 
+    //de contact avec les filtres pour trier les medias.
     createPhotographerPage() {
         const altImg = `${this._photographer._name}, ${this._photographer._city}, ${this._photographer._tagline}, ${this._photographer.price}€ par jour`;
         
@@ -39,6 +40,7 @@ class PhotographerPage {
         return $articlePage;
     }
 
+    //Je génère et renvoie ici la bannière de tarif du photographe avec le nombre total de likes 
     createLikes(totalLikes) {
       const $articleLikes = document.createElement('article');
       const displayLikes = 
@@ -51,6 +53,7 @@ class PhotographerPage {
       return $articleLikes;
     }
 
+    //Je crée une fonction qui va implémenter ou décrémenter les likes/dislikes de chaque média et les ajouter au total
     incrementLikes(totalLikes) {
       const hearts = document.querySelectorAll('.mediaDisplay_heart');
       let like = document.querySelectorAll('.mediaDisplay_infosLike');
@@ -77,7 +80,7 @@ class PhotographerPage {
         })
       });
     }
-
+    //Je crée une fonction permettant d'ajouter dynamiquement un balise HTML img ou video en fonction du media
     renderMedia(media) {
         if(media.image) {
             return `<img class="linkRenderMedia" data-id="${media.id}" src="/assets/photographers/${this._photographer.name}/${media.image}"  alt="${media.title}"/>`;
@@ -85,7 +88,7 @@ class PhotographerPage {
             return `<video class="linkRenderMedia" data-id="${media.id}" src="/assets/photographers/${this._photographer.name}/${media.video}" poster="" type="video/mp4" aria-label="${media.title}"></video>`;
         }
     }
-
+    //je crée une fonction qui me permettra d'ajouter dynamiquement le chemin d'accès au media en fonction de son type 
     linkMedia(media) {
       if(media.image) {
         return `/assets/photographers/${this._photographer.name}/${media.image}`;
@@ -93,7 +96,7 @@ class PhotographerPage {
         return `/assets/photographers/${this._photographer.name}/${media.video}`;
       }
     }
-    
+    //Je génère et renvoie la vue associé aux médias de la page photographe
     createPhotographerMedia() {
       const $articleMedias = document.createElement('article');
       const displayMedias = 
@@ -114,7 +117,7 @@ class PhotographerPage {
       return $articleMedias;
     }
     
-
+    // je génère et renvoie la vue associé à la modale de contact 
     createModalDisplay() {
       const $displayModal = document.createElement('div');
       $displayModal.setAttribute('class', 'modal');
@@ -162,7 +165,8 @@ class PhotographerPage {
       $displayModal.innerHTML = modalDisplay;
       return $displayModal;
     }
-    
+
+    //Je génère et renvoie la vue associé à l'affichage dynamique de la lightbox
     displayLightBox() {  
       const $content = document.createElement('div');
       $content.setAttribute('class', 'lightbox__container');
@@ -196,7 +200,7 @@ class PhotographerPage {
             var titleMedia = document.createElement('p');
             titleMedia.setAttribute('class', 'titleMedia');
             linkElement.setAttribute('src', linkSrc);
-            linkElement.setAttribute('alt', link.name);
+            linkElement.setAttribute('aria-label', link.name);
             linkElement.setAttribute('controls', true);
             linkElement.setAttribute('autoplay', true);
             titleMedia.innerHTML = `${link.name}`;
@@ -233,7 +237,7 @@ class PhotographerPage {
           linkElement.setAttribute('src', `${linkSrc}`);
           linkElement.setAttribute('controls', true);
           linkElement.setAttribute('autoplay', true);
-          linkElement.setAttribute('alt', `${links[compteur].name}`);
+          linkElement.setAttribute('aria-label', `${links[compteur].name}`);
           var titleMedia = document.createElement('p');
           titleMedia.setAttribute('class', 'titleMedia');
           titleMedia.innerHTML = `${links[compteur].name}`;
@@ -264,7 +268,7 @@ class PhotographerPage {
           linkElement.setAttribute('src', `${linkSrc}`);
           linkElement.setAttribute('controls', true);
           linkElement.setAttribute('autoplay', true);
-          linkElement.setAttribute('alt', `${links[compteur].name}`);
+          linkElement.setAttribute('aria-label', `${links[compteur].name}`);
           var titleMedia = document.createElement('p');
           titleMedia.setAttribute('class', 'titleMedia');
           titleMedia.innerHTML = `${links[compteur].name}`;

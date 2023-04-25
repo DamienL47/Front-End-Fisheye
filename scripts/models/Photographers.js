@@ -1,3 +1,4 @@
+//je défini un modèle pour l'appel des photographes
 class Photographer {
     constructor(photographer) {
         this._name = photographer.name

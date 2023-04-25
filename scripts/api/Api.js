@@ -6,13 +6,14 @@ class Api {
     constructor(url) {
         this._url = url
     }
-
+    //Je récupère les datas photographes
     async getData() {
         return fetch(this._url)
         .then(res => res.json())
         .then(res => res.photographers)
         .catch(err => console.log('Erreur de chargement du fichier', err));
     }
+    //Je récupère les datas Medias
     async getMedia() {
         return fetch(this._url)
         .then(res => res.json())
@@ -30,11 +31,11 @@ class GetPhotographers extends Api {
     constructor(url) {
         super(url)
     }
-
+    //Appel des données photographes
     async getPhotograph() {
         return await this.getData()
     }
-    
+    // Appel des données Médias
     async getMedias() {
         return await this.getMedia()
     }

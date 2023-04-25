@@ -1,4 +1,4 @@
-// ma classe PhotographersCard retourne le template ou la vue de mes cartes photographers 
+// ma classe PhotographersCard retourne le template ou la vue de mes cartes photographers sur la page d'accueil 
 class PhotographersCard {
     constructor(photographer){
         this._photographer = new Photographer(photographer);

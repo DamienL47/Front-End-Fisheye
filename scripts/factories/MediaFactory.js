@@ -1,4 +1,4 @@
-
+// J'utilise le design pattern Factory pour classer les medias en fonction de leurs types
 class TypedataFactory {
     constructor(media) {
         if(media.image){

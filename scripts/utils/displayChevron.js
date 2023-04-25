@@ -1,3 +1,4 @@
+// Je crée une fonction pour déployer le menu filtre 
 function displayChevron() {
     const btnFilter = document.querySelector('.filter_btn');
     const chevronUp = document.querySelector('.chevron-up');
