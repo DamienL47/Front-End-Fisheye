@@ -338,8 +338,13 @@ form textarea {
     cursor: pointer;
     top: 90px;
     right: 30px;
-    border: none;
     z-index: 11;
+}
+.closeLightbox[type="button"] {
+    width: 50px;
+    height: 50px;
+    border: none;
+    background: none;
 }
 
 #bodyLightbox {
@@ -377,8 +382,6 @@ form textarea {
     height: 900px;
     border-radius: 5px;
     object-fit: cover;
-    /* position: fixed; */
-    /* z-index: 11; */
 }
 
 .fa-chevron-left, .fa-chevron-right {

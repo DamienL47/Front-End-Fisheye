@@ -168,16 +168,17 @@ class PhotographerPage {
 
     //Je génère et renvoie la vue associé à l'affichage dynamique de la lightbox
     displayLightBox() {  
-      const $content = document.createElement('dialog');
+      const $content = document.createElement('div');
       $content.setAttribute('class', 'lightbox__container');
       $content.setAttribute('role', 'dialog');
-      $content.setAttribute('aria-label', 'Affichage des medias en gros plan');
       const $image = document.querySelectorAll('a[href$=".jpg"]');
       const $video = document.querySelectorAll('a[href$=".mp4"]');
       const links = [...$image, ...$video];   
       const modalLightbox = document.getElementById('lightbox');
       const bodyLightbox = document.getElementById('bodyLightbox');
       const main = document.getElementById('main');
+      const header = document.getElementById('header');
+      const modal = document.getElementById('contact_modal');
       const $next = document.querySelector('.next');
       const $prev = document.querySelector('.prev');
       const $close = document.querySelector('.closeLightbox');
@@ -192,21 +193,21 @@ class PhotographerPage {
             var linkElement = document.createElement('img');
             var titleMedia = document.createElement('p');
             titleMedia.setAttribute('class', 'titleMedia');
-            titleMedia.setAttribute('aria-label', link.name);
             linkElement.setAttribute('src', linkSrc);
             linkElement.setAttribute('alt', link.name);
             titleMedia.innerHTML = `${link.name}`;
+            $content.setAttribute('aria-label', link.name);
             $content.appendChild(linkElement);
             $content.appendChild(titleMedia);
           } else if(linkSrc.endsWith('.mp4')) {
             var linkElement = document.createElement('video');
             var titleMedia = document.createElement('p');
             titleMedia.setAttribute('class', 'titleMedia');
-            titleMedia.setAttribute('aria-label', link.name);
             linkElement.setAttribute('src', linkSrc);
             linkElement.setAttribute('controls', true);
             linkElement.setAttribute('autoplay', true);
             titleMedia.innerHTML = `${link.name}`;
+            $content.setAttribute('aria-label', link.name);
             $content.appendChild(linkElement);
             $content.appendChild(titleMedia);
           }
@@ -214,6 +215,8 @@ class PhotographerPage {
           modalLightbox.setAttribute('aria-hidden', 'false')
           bodyLightbox.setAttribute('aria-hidden', 'false')
           main.setAttribute('aria-hidden', 'true');
+          header.setAttribute('aria-hidden', 'true');
+          modal.setAttribute('aria-hidden', 'true');
           modalLightbox.style.display = "block"
         })
       });
@@ -231,7 +234,7 @@ class PhotographerPage {
           linkElement.setAttribute('alt', `${links[compteur].name}`);
           var titleMedia = document.createElement('p');
           titleMedia.setAttribute('class', 'titleMedia');
-          titleMedia.setAttribute('aria-label', `${links[compteur].name}`);
+          $content.setAttribute('aria-label', `${links[compteur].name}`);
           $content.appendChild(linkElement);
           titleMedia.innerHTML = `${links[compteur].name}`;
           $content.appendChild(titleMedia);
@@ -243,8 +246,8 @@ class PhotographerPage {
           linkElement.setAttribute('autoplay', true);
           var titleMedia = document.createElement('p');
           titleMedia.setAttribute('class', 'titleMedia');
-          titleMedia.setAttribute('aria-label', `${links[compteur].name}`);
           titleMedia.innerHTML = `${links[compteur].name}`;
+          $content.setAttribute('aria-label', `${links[compteur].name}`);
           $content.appendChild(linkElement);
           $content.appendChild(titleMedia);
         }
@@ -263,8 +266,8 @@ class PhotographerPage {
           linkElement.setAttribute('alt', `${links[compteur].name}`);
           var titleMedia = document.createElement('p');
           titleMedia.setAttribute('class', 'titleMedia');
-          titleMedia.setAttribute('aria-label', `${links[compteur].name}`);
           titleMedia.innerHTML = `${links[compteur].name}`;
+          $content.setAttribute('aria-label', `${links[compteur].name}`);
           $content.appendChild(linkElement);
           $content.appendChild(titleMedia);
         } else if(linkSrc.endsWith('.mp4')) {
@@ -275,8 +278,8 @@ class PhotographerPage {
           linkElement.setAttribute('autoplay', true);
           var titleMedia = document.createElement('p');
           titleMedia.setAttribute('class', 'titleMedia');
-          titleMedia.setAttribute('aria-label', `${links[compteur].name}`);
           titleMedia.innerHTML = `${links[compteur].name}`;
+          $content.setAttribute('aria-label', `${links[compteur].name}`);
           $content.appendChild(linkElement);
           $content.appendChild(titleMedia);
         }
@@ -285,6 +288,8 @@ class PhotographerPage {
         modalLightbox.setAttribute('aria-hidden', 'true')
         bodyLightbox.setAttribute('aria-hidden', 'true')
         main.setAttribute('aria-hidden', 'false');
+        header.setAttribute('aria-hidden', 'false');
+        modal.setAttribute('aria-hidden', 'false');
         modalLightbox.style.display = "none"
         $content.innerHTML = "";
       });
@@ -299,9 +304,10 @@ class PhotographerPage {
             $content.innerHTML = "";
             var linkElement = document.createElement('img');
             linkElement.setAttribute('src', `${linkSrc}`);
+            linkElement.setAttribute('alt', `${links[compteur].name}`);
             var titleMedia = document.createElement('p');
             titleMedia.setAttribute('class', 'titleMedia');
-            titleMedia.setAttribute('aria-label', `${links[compteur].name}`);
+            $content.setAttribute('aria-label', `${links[compteur].name}`);
             $content.appendChild(linkElement);
             titleMedia.innerHTML = `${links[compteur].name}`;
             $content.appendChild(titleMedia);
@@ -313,8 +319,8 @@ class PhotographerPage {
             linkElement.setAttribute('autoplay', true);
             var titleMedia = document.createElement('p');
             titleMedia.setAttribute('class', 'titleMedia');
-            titleMedia.setAttribute('aria-label', `${links[compteur].name}`);
             titleMedia.innerHTML = `${links[compteur].name}`;
+            $content.setAttribute('aria-label', `${links[compteur].name}`);
             $content.appendChild(linkElement);
             $content.appendChild(titleMedia);
           }
@@ -328,10 +334,11 @@ class PhotographerPage {
             $content.innerHTML = "";
             var linkElement = document.createElement('img');
             linkElement.setAttribute('src', `${linkSrc}`);
+            linkElement.setAttribute('alt', `${links[compteur].name}`);
             var titleMedia = document.createElement('p');
             titleMedia.setAttribute('class', 'titleMedia');
-            titleMedia.setAttribute('aria-label', `${links[compteur].name}`);
             titleMedia.innerHTML = `${links[compteur].name}`;
+            $content.setAttribute('aria-label', `${links[compteur].name}`);
             $content.appendChild(linkElement);
             $content.appendChild(titleMedia);
           } else if(linkSrc.endsWith('.mp4')) {
@@ -342,8 +349,8 @@ class PhotographerPage {
             linkElement.setAttribute('autoplay', true);
             var titleMedia = document.createElement('p');
             titleMedia.setAttribute('class', 'titleMedia');
-            titleMedia.setAttribute('aria-label', `${links[compteur].name}`);
             titleMedia.innerHTML = `${links[compteur].name}`;
+            $content.setAttribute('aria-label', `${links[compteur].name}`);
             $content.appendChild(linkElement);
             $content.appendChild(titleMedia);
           }
@@ -351,6 +358,8 @@ class PhotographerPage {
           modalLightbox.setAttribute('aria-hidden', 'true')
           bodyLightbox.setAttribute('aria-hidden', 'true')
           main.setAttribute('aria-hidden', 'false');
+          header.setAttribute('aria-hidden', 'false');
+          modal.setAttribute('aria-hidden', 'false');
           modalLightbox.style.display = "none"
           $content.innerHTML = "";
         }

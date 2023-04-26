@@ -1,7 +1,6 @@
 // Je défini le modèle de construction pour l'appel des medias  
 class PhotographerMedia {
     constructor(media) {
-        // this._media = media
         this._photographerId = media.photographerId
         this._title = media.title
         this._image = media.image
