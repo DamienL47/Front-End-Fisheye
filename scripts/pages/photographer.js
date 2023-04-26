@@ -29,7 +29,7 @@ class PhotographerPage {
           <div class="filter_btn" onclick="displayChevron()" type="menubar" aria-expanded="false" >
           <span class="chevron-down"><i class="fa-solid fa-chevron-down"></i></span> <span class="chevron-up"><i class="fa-solid fa-chevron-up"></i></span>
             <div class="filter_list"  aria-label="Trier les medias par">
-              <button class="filter_popular" type="menuitem" aria-selected="true">Popularité</button>
+              <button class="filter_popular" type="menuitem" aria-selected="false">Popularité</button>
               <button class="filter_date" type="menuitem" aria-selected="false">Date</button>
               <button class="filter_title" type="menuitem" aria-selected="false">Titre</button>
             </div>
